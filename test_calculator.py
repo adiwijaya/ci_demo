@@ -1,5 +1,6 @@
 """
 Unit tests for the calculator library
+# pytest -v --cov
 """
 
 import calculator
