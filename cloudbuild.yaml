@@ -19,7 +19,6 @@ steps:
       '-t', 'gcr.io/$PROJECT_ID/calculator-app',
       './'
     ]
-    
 - name: 'gcr.io/$PROJECT_ID/calculator-app'
   id: Test
   # cloudbuild mounts the git repo to the home directory, so we can run our tests
@@ -27,7 +26,7 @@ steps:
   args:
   - -m
   - unittest
-  - tests/dag_integrity_test.py
+  - tests/test_calculator.py
 - name: gcr.io/cloud-builders/gsutil
   id: Deploy DAGs
   args:
