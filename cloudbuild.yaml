@@ -39,6 +39,5 @@ steps:
   - -d
   - -x
   - .*\.pyc|airflow_monitoring.py
-  - /cloudbuild_output
-  - gs://aw-general-dev
+  - gs://aw-general-dev/cloudbuild_output
 images: ['asia.gcr.io/$PROJECT_ID/calculator-app']
