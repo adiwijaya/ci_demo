@@ -16,10 +16,11 @@ steps:
   id: Prep
   args: [
       'build',
-      '-t', 'gcr.io/$PROJECT_ID/calculator-app',
+      '-t', 'asia.gcr.io/$PROJECT_ID/calculator-app',
       './'
     ]
-- name: 'gcr.io/$PROJECT_ID/calculator-app'
+
+- name: 'asia.gcr.io/$PROJECT_ID/calculator-app'
   id: Test
   # cloudbuild mounts the git repo to the home directory, so we can run our tests
   entrypoint: python
@@ -27,6 +28,7 @@ steps:
   - -m
   - unittest
   - tests/test_calculator.py
+
 - name: gcr.io/cloud-builders/gsutil
   id: Deploy DAGs
   args:
@@ -38,5 +40,5 @@ steps:
   - -x
   - .*\.pyc|airflow_monitoring.py
   - /workspace/dags/
-  - gs://${_COMPOSER_GCS_BUCKET}/dags/
-images: ['gcr.io/$PROJECT_ID/airflow-dags-builder']
+  - gs://aw-general-dev/cloudbuild_output
+images: ['asia.gcr.io/$PROJECT_ID/calculator-app']
