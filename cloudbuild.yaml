@@ -2,6 +2,16 @@
 # or representation for any use or purpose. Your use of it is subject to your
 # agreement with Google.
 steps:
+- id: 'branch name'
+  name: 'alpine'
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - |
+      echo "***********************"
+      echo "$BRANCH_NAME"
+      echo "***********************"
+
 - name: gcr.io/cloud-builders/docker
   id: Prep
   args: [
@@ -9,6 +19,7 @@ steps:
       '-t', 'gcr.io/$PROJECT_ID/calculator-app',
       './'
     ]
+    
 - name: 'gcr.io/$PROJECT_ID/calculator-app'
   id: Test
   # cloudbuild mounts the git repo to the home directory, so we can run our tests
